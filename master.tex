@@ -1,0 +1,250 @@
+%%%%
+% MTecknology's Resume - adapted for Tran Nhat Nam
+%%%%
+
+\documentclass[letterpaper,10pt]{article}
+
+% Dependencies
+% NOTE: Some packages (lastpage, hyperref) require second build!
+\usepackage[empty]{fullpage}
+\usepackage{titlesec}
+\usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
+\usepackage{fancyhdr}
+\usepackage{fontawesome5}
+\usepackage{multicol}
+\usepackage{bookmark}
+\usepackage{lastpage}
+
+% Font
+\usepackage{libertinus}
+
+% Colors
+% Use with \color{Name}
+% Can wrap entire heading with {\color{accent} [...] }
+\usepackage{xcolor}
+\definecolor{accentTitle}{HTML}{0e6e55}
+\definecolor{accentText}{HTML}{0e6e55}
+\definecolor{accentLine}{HTML}{a16f0b}
+
+% Misc. Options
+\pagestyle{fancy}
+\fancyhf{}
+\fancyfoot{}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+\urlstyle{same}
+
+% Adjust Margins
+\addtolength{\oddsidemargin}{-0.7in}
+\addtolength{\evensidemargin}{-0.5in}
+\addtolength{\textwidth}{1.19in}
+\addtolength{\topmargin}{-0.7in}
+\addtolength{\textheight}{1.7in}
+
+\setlength{\multicolsep}{-3.0pt}
+\setlength{\columnsep}{-1pt}
+\setlength{\tabcolsep}{0pt}
+\setlength{\footskip}{3.7pt}
+\raggedbottom
+\raggedright
+
+% ATS Readability (no-op glyph mapping for XeTeX; full support under pdfTeX)
+\newcommand{\pdfglyphtounicode}[2]{}
+\input{glyphtounicode}
+\ifdefined\pdfgentounicode
+  \pdfgentounicode=1
+\fi
+
+%-----------------%
+% Custom Commands %
+%-----------------%
+
+% Centered title along with subtitle between HR
+% Usage: \documentTitle{Name}{Details}
+\newcommand{\documentTitle}[2]{
+  \begin{center}
+    {\Huge\bfseries #1}
+    \vspace{10pt}
+    \footnotesize{#2}
+    \vspace{2pt}
+  \end{center}
+}
+
+% Create a footer with correct padding
+% Usage: \documentFooter{\thepage of X}
+\newcommand{\documentFooter}[1]{
+  \setlength{\footskip}{10.25pt}
+  \fancyfoot[C]{\footnotesize #1}
+}
+
+% Simple wrapper to set up page numbering
+% Usage: \numberedPages
+% WARNING: Must run pdflatex twice!
+\newcommand{\numberedPages}{
+  \documentFooter{\thepage/\pageref{LastPage}}
+}
+
+% Section heading with horizontal rule
+% Usage: \section{Title}
+\titleformat{\section}{
+  \color{accentText}
+  \raggedright\large\bfseries
+}{}{0em}{}[\color{accentLine}\titlerule]
+\titlespacing*{\section}{0pt}{10pt}{6pt}
+
+% Section heading with separator and content on same line
+% Usage: \tinysection{Title}
+\newcommand{\tinysection}[1]{
+  \phantomsection
+  \addcontentsline{toc}{section}{#1}
+  {\large{\bfseries\color{accentText}#1} {\color{accentLine} |}}
+}
+
+% Indented line with arguments left/right aligned in document
+% Usage: \heading{Left}{Right}
+\newcommand{\heading}[2]{
+  \hspace{10pt}#1\hfill#2\\
+}
+
+% Adds \textbf to \heading
+\newcommand{\headingBf}[2]{
+  \heading{\textbf{#1}}{\textbf{#2}}
+}
+
+% Adds \textit to \heading
+\newcommand{\headingIt}[2]{
+  \heading{\textit{#1}}{\textit{#2}}
+}
+
+% Template for itemized lists
+% Usage: \begin{resume_list} [items] \end{resume_list}
+\newenvironment{resume_list}{
+  \vspace{-2pt}
+  \begin{itemize}[topsep=2pt, itemsep=2pt, parsep=0pt, leftmargin=30pt, label=\textbullet]
+}{
+  \end{itemize}
+}
+
+% Formats an item to use as an itemized title
+% Usage: \itemTitle{Title}
+\newcommand{\itemTitle}[1]{
+  \item[] \underline{#1}\vspace{4pt}
+}
+
+% Bullets used in itemized lists
+\renewcommand\labelitemi{--}
+
+\begin{document}
+
+%---------%
+% Heading %
+%---------%
+
+\documentTitle{TRAN NHAT NAM}{
+\vspace{3pt}
+
+{\large\color{gray}\itshape Product Data Engineer | Ho Chi Minh City, Vietnam}
+
+\vspace{10pt}
+
+{
+  \raisebox{-0.05\height} \faPhone\ +84 832255586} ~ | ~
+{
+  \raisebox{-0.15\height} \faEnvelope\ nam.trannhat067@gmail.com} ~ | ~
+\href{https://www.linkedin.com/in/nam-tran-nhat/}{
+  \raisebox{-0.15\height} \faLinkedin\ linkedin.com/in/nam-tran-nhat} ~ | ~
+\href{https://github.com/namtran067}{
+  \raisebox{-0.15\height} \faGithub\ github.com/namtran067}
+}
+
+%---------%
+% Summary %
+%---------%
+
+\section{Summary}
+\textbf{Product Data Engineer} with 4+ years of experience creating \textbf{end-to-end data solutions} -- from \textbf{ETL/ELT pipelines} and \textbf{data platform architecture} to \textbf{data governance, data quality, BI and AI applications}. More than a technician: I dive deep into the business needs of each department (Sales, Marketing, Finance, BOD) to turn data into decisions -- \textbf{cutting ETL operational cost by 90\%}, \textbf{consultation time by 60\%}, and \textbf{accelerating decisions up to 3x}. Strong in data modeling, stakeholder communication, cross-functional collaboration, technical documentation and integration with Odoo, ERPNext, Haravan and BizFly.
+
+%-----------------%
+% Technical Skills %
+%-----------------%
+
+\section{Technical Skills}
+\begin{itemize}[leftmargin=30pt, label=\textbullet, itemsep=1pt]
+  \item \textbf{Languages \& Query:} Python, SQL, Git
+  \item \textbf{Data Engineering:} ETL/ELT, batch \& streaming pipelines, dbt, Dagster (orchestration), Airbyte, dlt, n8n, Apache Kafka, AWS Lambda, Docker, CI/CD
+  \item \textbf{Data Architecture:} PostgreSQL, BigQuery, medallion architecture (raw/staging/marts), dimensional modeling, data lineage \& catalog (dbt docs), vector databases
+  \item \textbf{Data Quality \& Observability:} dbt tests, data validation, Sentry monitoring, data freshness SLAs
+  \item \textbf{BI \& AI:} Looker, Metabase, Looker Studio, LLM APIs, prompt engineering, RAG / vector search
+  \item \textbf{Business Systems \& Integration:} Odoo, ERPNext, Haravan, BizFly, AppSheet, Lark Suite, REST APIs, web scraping, WordPress
+  \item \textbf{Soft Skills:} stakeholder communication, cross-functional collaboration, technical mentorship, documentation, problem-solving, project ownership
+\end{itemize}
+
+%------------%
+% Experience %
+%------------%
+
+\section{Experience}
+
+\headingBf{Senior Data Engineer | Jemmia}{Sep 2023 -- Present}
+\vspace{3pt}
+\begin{resume_list}
+  \item \textbf{Architected the company's centralized data platform:} unified ingestion from Haravan, ERP, warehouse scanning and ad platforms (Google Ads, GA4, Facebook Ads) via dlt, Airbyte and n8n into PostgreSQL; orchestrated with Dagster; transformed data through a \textbf{medallion architecture} (raw $\rightarrow$ staging $\rightarrow$ marts) with dbt; \textbf{cut ETL development effort by 90\%} versus legacy Lambda scripts.
+  \item \textbf{Built data quality into the pipeline:} wrote \textbf{dbt tests} and validation checks on critical marts, set up \textbf{Sentry-based observability and alerting} to catch failures early, and documented \textbf{data lineage} with dbt docs as the company's \textbf{data catalog}.
+  \item \textbf{Championed data governance} across departments: standardized product definitions, SKU/variant rules and naming conventions; reorganized internal Lark Base data and built mini ETL flows delivering clean data back to department workspaces; trained teams and documented standard usage rules.
+  \item \textbf{Streaming \& AI data products:} captured customer conversations via \textbf{Apache Kafka webhooks}, scored them against 8 criteria with LLM prompts and indexed them into a \textbf{vector database} for RAG-based analysis; built an \textbf{AI-powered natural-language Q\&A layer} over the warehouse; scraped Facebook audience data (Custom Lens) into the warehouse.
+  \item Rebuilt the company CRM on \textbf{BizFly} (migrating from \textbf{Odoo} with full data standardization and backfill), then led the ERP transition to \textbf{ERPNext} -- rollout planning, production deployment with \textbf{CI/CD}, and \textbf{REST API} source-system integration. Result: \textbf{100\% consolidated customer information} with a clear end-to-end journey.
+  \item Delivered BI for Sales, Marketing, Finance and BOD on Looker, migrated to Metabase with fine-grained permissions -- \textbf{enabling strategy shifts up to 3x faster}; \textbf{mentored and guided the dev team} through rollout phases; owned CI/CD and Dockerized deployments for data and company projects.
+\end{resume_list}
+
+\vspace{10pt}
+
+\headingBf{Data Analyst (Startup) | BabyBet}{Jul 2023 -- Sep 2023}
+\vspace{3pt}
+\begin{resume_list}
+  \item Conducted market research and surveys; \textbf{automated competitor data scraping with Python} (e.g., Grab) to analyze cost of goods, margins and operating expenses.
+  \item Delivered AI-assisted analyses and dashboards that guided product strategy and pricing decisions for the startup.
+\end{resume_list}
+
+\vspace{10pt}
+
+\headingBf{Data Analyst | Avli Group JSC}{Feb 2023 -- Jul 2023}
+\vspace{3pt}
+\begin{resume_list}
+  \item \textbf{Built automated ETL flows} (Python, AWS Lambda, Zapier) for apartment and customer data, achieving \textbf{2x faster processing} than manual Excel workflows.
+  \item Designed and maintained \textbf{dimensional data models}, dashboards and reports in BigQuery and Looker Studio tracking apartment inventory and individual sales performance; \textbf{boosted apartment-check efficiency by 50\%}.
+  \item Integrated the database with \textbf{AppSheet via REST APIs} to build the company's CRM app for product management.
+  \item Delivered ad-hoc analyses and dashboards that shaped leadership strategy; built the corporate website with WordPress.
+\end{resume_list}
+
+\vspace{10pt}
+
+\headingBf{Data Research Assistant | ASIA Research Lab}{Jun 2022 -- Jan 2023}
+\vspace{3pt}
+\begin{resume_list}
+  \item Contributed to a Vietnamese Speech-to-Text project: proposed data-source strategies and \textbf{built audio-text labeling workflows with Label Studio}.
+  \item \textbf{Trained and evaluated ASR models} with Python and Docker on Vietnamese speech data.
+\end{resume_list}
+
+%-----------%
+% Education %
+%-----------%
+
+\section{Education}
+
+\headingBf{University of Information Technology}{2019 -- Jun 2023}
+\heading{Bachelor of Data Science}{Ho Chi Minh City, VN}
+\heading{GPA: 8.5/10}{}
+\heading{Relevant Coursework: Relational Databases, Big Data, Machine Learning, Computer Vision}{}
+
+%----------------------------%
+%          Certificate       %
+%----------------------------%
+
+\section{Certificate}
+
+\begin{itemize}
+  \item \textbf{IELTS}: 7.0
+\end{itemize}
+
+\end{document}

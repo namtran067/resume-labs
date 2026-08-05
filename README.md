@@ -1,73 +1,9 @@
-# CV — Tran Nhat Nam (Product Data Engineer)
+# CV — Tran Nhat Nam (multi-CV workspace)
 
-This repo builds and maintains a LaTeX-based CV (Harvard/ATS-friendly) compiled to PDF
-with **Tectonic**. Two versions are maintained:
-
-- `main.tex` → `main.pdf`: the main CV (2 pages), tailored for Senior Data Engineer roles.
-- `master.tex` → `master.pdf`: the Master CV (2 pages), keyword-rich — the source used to
-  fine-tune a version per job description.
-
----
-
-## Requirements
-
-- **macOS** (tested on Apple Silicon).
-- **Homebrew** (`brew`).
-- The **Libertinus** font does **not** need to be installed manually — Tectonic fetches it
-  from CTAN automatically on the first build.
-
-## Tooling setup
-
-### 1. Install Tectonic (the LaTeX engine)
-
-```bash
-brew install tectonic
-```
-
-Verify:
-
-```bash
-tectonic --version
-# Tectonic 0.17.0 (or newer)
-```
-
-> Tectonic uses the **XeTeX** engine, so `fontspec`, system fonts and the `libertinus`
-> package all work out of the box. Missing packages are auto-fetched — no full TeX Live
-> install is required.
-
-### 2. (Optional) VS Code + extension
-
-VS Code is recommended for editing `.tex` files:
-
-- Install the **LaTeX Workshop** extension (`James-Yu.latex-workshop`).
-- Set its default recipe to use `tectonic` if you want to build with a keyboard shortcut.
-  The simplest path is still to run `tectonic` in the terminal (see below).
-
----
-
-## Editing & Building
-
-### Build manually (terminal)
-
-After editing a `.tex` file, run:
-
-```bash
-tectonic main.tex      # produces main.pdf
-tectonic master.tex    # produces master.pdf
-```
-
-The PDF is written to the repo root, overwriting the previous one.
-
-### Build on save (VS Code)
-
-If LaTeX Workshop is configured to use Tectonic, `Cmd+S` will rebuild and live-preview the
-PDF inside the editor.
-
-### View the PDF
-
-```bash
-open main.pdf
-```
+LaTeX-based CV (Harvard/ATS-friendly) compiled with **Tectonic**. Each CV lives in its own
+**self-contained folder**: a thin `resume.tex` assembly plus a private set of content blocks
+(preamble, header, summary, skills, experience, projects, education). Nothing is shared
+between CVs — creating a new CV = copying a folder.
 
 ---
 
@@ -75,58 +11,120 @@ open main.pdf
 
 ```
 .
-├── main.tex        # Main CV (2 pages) — edit content here
-├── master.tex      # Master CV (2 pages, full keyword set)
-├── main.pdf        # Generated PDF (kept in repo)
-├── master.pdf      # Generated PDF (kept in repo)
-├── main.log        # Build log (auto-generated, gitignored)
-└── README.md       # This file
+├── template/                     # Starter skeleton — copy this to create a new CV
+│   ├── resume.tex                #   assembly (inputs the blocks below)
+│   ├── preamble.tex              #   layout: packages, colors, custom commands
+│   ├── header.tex                #   name + title + contact   (placeholders)
+│   ├── summary.tex               #   summary                  (placeholder)
+│   ├── skills.tex                #   technical skills         (placeholder)
+│   ├── education.tex             #   education                (placeholder)
+│   ├── experience/company-a.tex  #   one file per job         (sample)
+│   └── projects/project-a.tex    #   one file per project     (sample)
+├── cv/                           # One folder per CV
+│   └── data-engineer-jemmia/     # Senior Data Engineer @ Jemmia Diamond
+│       ├── resume.tex            #   assembly
+│       ├── preamble.tex
+│       ├── header.tex
+│       ├── summary.tex
+│       ├── skills.tex
+│       ├── experience/
+│       │   ├── jemmia-diamond.tex
+│       │   ├── babybet.tex
+│       │   ├── avli-group.tex
+│       │   └── aisia-research.tex
+│       ├── projects/
+│       │   ├── data-platform.tex
+│       │   ├── rag-assistant.tex
+│       │   ├── price-tracker.tex
+│       │   └── asr-experiment.tex
+│       ├── education.tex
+│       └── resume.pdf            # built output
+└── README.md
+```
+
+### Why one folder per CV?
+
+Each application is a **frozen snapshot**. A CV folder is 100% self-contained and portable:
+copy it anywhere, build it on its own, tweak its layout — it never breaks another CV. Blocks
+are split into small files for easy editing, but they belong to **that CV only** (no shared
+`content/` pool across CVs).
+
+---
+
+## Requirements
+
+- **macOS** (tested on Apple Silicon) + **Homebrew**.
+- The **Libertinus** font is fetched automatically by Tectonic — no manual install.
+
+```bash
+brew install tectonic
+tectonic --version   # 0.17.0 or newer
 ```
 
 ---
 
-## CV sections
+## Build a CV
 
-Both `main.tex` and `master.tex` follow the **MTecknology's Resume** layout:
+From the repo root — no extra flags needed (all blocks live next to `resume.tex`):
 
-- **Header**: name (bold, black), "Product Data Engineer" title, contact (phone / email / LinkedIn / GitHub).
-- **Summary**: a 3–4 line positioning statement (product data engineer, not just an ETL builder).
-- **Technical Skills**: 6 lines grouped by Languages / Data Engineering / Databases / BI & AI / Cloud & Integration / Stakeholder Communication.
-- **Experience** (page 1): Jemmia Diamond, BabyBet, AVLI Group JSC, AISIA Research Lab.
-- **Personal Projects** (page 2): 4 placeholder entries — replace with real projects.
-- **Education** (page 2, bottom): UIT, Bachelor of Data Science, GPA 8.5/10 | IELTS 7.0.
+```bash
+tectonic cv/data-engineer-jemmia/resume.tex
+open cv/data-engineer-jemmia/resume.pdf
+```
+
+The PDF is written next to `resume.tex`, overwriting the previous one.
 
 ---
 
-## Important notes when editing
+## Create a new CV
 
-- **Keep it to 2 pages**: the layout has been carefully tuned so `main.tex` fits exactly
-  2 pages. Adding content that overflows to page 3 means you must trim another bullet or
-  reduce spacing (see `\vspace`, `itemsep`, `titlespacing` in the preamble).
-- **Font**: uses `\usepackage{libertinus}`. Do **not** stack `charter` or `CormorantGaramond`
-  on top — it breaks bold rendering (see git history to avoid repeating this bug).
-- **Colors**: green `#0e6e55` (section titles), gold `#a16f0b` (rule line). Change them in
-  `\definecolor{accentTitle}{HTML}{...}` in the preamble.
-- **Job heading format**: `\headingBf{Title | Company}{Date}` (everything bold).
-- **Page break**: a `\newpage` before *Personal Projects* forces content onto page 2.
-- **Company names**: verified officially (Jemmia Diamond, AVLI Group JSC, AISIA Research Lab).
-  If any is wrong, fix it and document it here.
-- **AISIA vs ASIA**: currently "AISIA Research Lab" — confirm the lab's real name.
+```bash
+# 1. copy the skeleton
+cp -r template cv/data-engineer-acme
+
+# 2. edit the blocks (start with header.tex + summary.tex tailored to the JD)
+#    add one experience/<company>.tex per job, one projects/<project>.tex per project
+
+# 3. build
+tectonic cv/data-engineer-acme/resume.tex
+```
+
+Folder naming convention: **`cv/<role>-<company>/`** (e.g. `cv/data-engineer-acme`,
+`cv/data-analyst-fpt`).
+
+> Tip: to tailor an existing CV for a new company with the **same role**, copy that CV folder
+> instead of `template/` — you keep all the real experience/project blocks and only rewrite
+> `summary.tex` (and maybe a couple of `skills.tex` lines) to match the JD.
+> ```bash
+> cp -r cv/data-engineer-jemmia cv/data-engineer-acme
+> ```
+
+---
+
+## Editing blocks
+
+- Each block file is self-contained LaTeX (no `\documentclass`, no `\begin{document}`).
+- `resume.tex` only `\input`s `preamble.tex` then the blocks, in order.
+- `preamble.tex` holds the layout: packages, colors, geometry, and custom commands:
+  - `\documentTitle`, `\heading`/`\headingBf`/`\headingIt`, `\tinysection`,
+    the `resume_list` environment, `\itemTitle`.
+  - Colors: `accentTitle`/`accentText` (`#0e6e55`), `accentLine` (`#a16f0b`).
+- **Keep each CV to 2 pages.** Overflow → trim a bullet or reduce `\vspace` in `resume.tex`.
+
+### Notes
+
+- **Font:** `\usepackage{libertinus}` only. Do **not** stack `charter` / `CormorantGaramond`
+  on top — it breaks bold rendering (see git history).
+- **Page break:** a `\newpage` in `resume.tex` forces content onto page 2.
+- **Company names:** verified officially (Jemmia Diamond, AVLI Group JSC, AISIA Research Lab).
 
 ---
 
 ## Packaging / Submitting
 
-Build the final PDF and send `main.pdf`:
-
 ```bash
-tectonic main.tex && open main.pdf
-```
-
-Rename it before sending:
-
-```bash
-cp main.pdf "Tran_Nhat_Nam_Senior_Data_Engineer.pdf"
+tectonic cv/data-engineer-jemmia/resume.tex
+cp cv/data-engineer-jemmia/resume.pdf "Tran_Nhat_Nam_Senior_Data_Engineer.pdf"
 ```
 
 ---
@@ -135,11 +133,10 @@ cp main.pdf "Tran_Nhat_Nam_Senior_Data_Engineer.pdf"
 
 | Error | Cause | Fix |
 |---|---|---|
-| `Font shape TU/bch/b/n undefined` | `charter` stacked on top | Remove `\usepackage{charter}`, keep only `libertinus` |
-| `Illegal unit of measure (pt inserted)` | `itemsep=-2px` | Change `px` to `pt` |
-| `! Undefined control sequence \pdfglyphtounicode` | Running under XeTeX | Already handled via `\newcommand{\pdfglyphtounicode}[2]{}` |
-| Overflows to page 3 | Added content | Trim a bullet or reduce `\vspace` / `titlespacing` |
-| No bold text | Wrong font setup | Use exactly one font package (`libertinus`) |
+| `File 'preamble.tex' not found` | Building from inside the folder, or wrong CWD | Run `tectonic cv/<name>/resume.tex` from the repo root (paths are local to the folder) |
+| `Font shape TU/bch/b/n undefined` | `charter` stacked on top | Keep only `libertinus` in `preamble.tex` |
+| `Illegal unit of measure (pt inserted)` | `itemsep=-2px` | Use `pt`, not `px` |
+| Overflows to page 3 | Too much content | Trim a bullet or reduce `\vspace` in `resume.tex` |
 
 ---
 

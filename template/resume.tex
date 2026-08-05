@@ -1,0 +1,55 @@
+%%%%
+% TEMPLATE — starter for a new CV.
+% Usage:
+%   cp -r template cv/<role>-<company>
+%   # edit cv/<role>-<company>/*.tex, then build:
+%   tectonic cv/<role>-<company>/resume.tex
+%%%%
+
+\input{preamble.tex}
+
+\begin{document}
+
+%---------%
+% Heading %
+%---------%
+\input{header.tex}
+
+%---------%
+% Summary %
+%---------%
+\input{summary.tex}
+
+%-----------------%
+% Technical Skills %
+%-----------------%
+\input{skills.tex}
+
+%------------%
+% Experience %
+%------------%
+\section{Experience}
+
+% Add one .tex per job under experience/, e.g.:
+%   \input{experience/<company>.tex}
+\input{experience/company-a.tex}
+
+\vspace{6pt}
+
+% \input{experience/company-b.tex}
+
+%----------------------------%
+%       Personal Projects    %
+%----------------------------%
+\section{Personal Projects}
+
+% Add one .tex per project under projects/, e.g.:
+%   \input{projects/<project>.tex}
+% \input{projects/project-a.tex}
+
+%-----------%
+% Education %
+%-----------%
+\input{education.tex}
+
+\end{document}

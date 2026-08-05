@@ -1,0 +1,17 @@
+# LaTeX build artefacts (tự sinh khi compile)
+*.log
+*.aux
+*.out
+*.toc
+*.synctex.gz
+*.fdb_latexmk
+*.fls
+*.bbl
+*.blg
+*.xdv
+
+# macOS
+.DS_Store
+
+# Giữ PDF trong repo (CV output) — bỏ comment 2 dòng dưới nếu KHÔNG muốn track PDF
+# *.pdf

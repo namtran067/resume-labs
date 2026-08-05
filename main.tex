@@ -6,7 +6,7 @@
 
 % Dependencies
 % NOTE: Some packages (lastpage, hyperref) require second build!
-\usepackage[empty]{fullpage}
+\usepackage{geometry}
 \usepackage{titlesec}
 \usepackage{enumitem}
 \usepackage[hidelinks]{hyperref}
@@ -35,17 +35,10 @@
 \renewcommand{\footrulewidth}{0pt}
 \urlstyle{same}
 
-% Adjust Margins
-\addtolength{\oddsidemargin}{-0.7in}
-\addtolength{\evensidemargin}{-0.5in}
-\addtolength{\textwidth}{1.19in}
-\addtolength{\topmargin}{-0.7in}
-\addtolength{\textheight}{1.7in}
-
-\setlength{\multicolsep}{-3.0pt}
+% Margins (balanced, standard)
+\geometry{letterpaper, top=0.5in, bottom=0.5in, left=0.6in, right=0.6in, footskip=0.3in}
 \setlength{\columnsep}{-1pt}
 \setlength{\tabcolsep}{0pt}
-\setlength{\footskip}{3.7pt}
 \raggedbottom
 \raggedright
 
@@ -91,7 +84,7 @@
   \color{accentText}
   \raggedright\large\bfseries
 }{}{0em}{}[\color{accentLine}\titlerule]
-\titlespacing*{\section}{0pt}{8pt}{5pt}
+\titlespacing*{\section}{0pt}{6pt}{4pt}
 
 % Section heading with separator and content on same line
 % Usage: \tinysection{Title}
@@ -121,7 +114,7 @@
 % Usage: \begin{resume_list} [items] \end{resume_list}
 \newenvironment{resume_list}{
   \vspace{-2pt}
-  \begin{itemize}[topsep=2pt, itemsep=2pt, parsep=0pt, leftmargin=30pt, label=\textbullet]
+  \begin{itemize}[topsep=2pt, itemsep=1pt, parsep=0pt, leftmargin=30pt, label=\textbullet]
 }{
   \end{itemize}
 }
@@ -136,6 +129,7 @@
 \renewcommand\labelitemi{--}
 
 \begin{document}
+
 
 %---------%
 % Heading %
@@ -163,7 +157,7 @@
 %---------%
 
 \section{Summary}
-\textbf{Product Data Engineer} with 4+ years of experience creating \textbf{end-to-end data solutions} -- from \textbf{ETL/ELT pipelines} and \textbf{data platforms} to \textbf{data governance, BI and AI applications}. More than a technician: I dive deep into the business needs of each department (Sales, Marketing, Finance, BOD) to turn data into decisions -- \textbf{cutting ETL operational cost by 90\%}, \textbf{consultation time by 60\%}, and \textbf{accelerating decisions up to 3x}. Experienced in data modeling, stakeholder collaboration and integration with Odoo, ERPNext, Haravan and BizFly.
+\textbf{Product Data Engineer} with 4+ years of experience creating \textbf{end-to-end data solutions} -- from \textbf{ETL/ELT pipelines} and \textbf{data platforms} to \textbf{data governance, BI and AI applications}. More than a technician: I dive deep into the business needs of each department (Sales, Marketing, Finance, BOD) to turn data into decisions -- \textbf{cutting ETL operational cost by 90\%}, \textbf{consultation time by 60\%}, and \textbf{accelerating decisions up to 3x}.
 
 %-----------------%
 % Technical Skills %
@@ -171,11 +165,12 @@
 
 \section{Technical Skills}
 \begin{itemize}[leftmargin=30pt, label=\textbullet, itemsep=1pt]
-  \item \textbf{Languages \& Query:} Python, SQL
-  \item \textbf{Data Engineering:} ETL/ELT, dbt, Dagster, Airbyte, dlt, n8n, Apache Kafka, AWS Lambda, Docker, CI/CD, Git
-  \item \textbf{Databases \& Modeling:} PostgreSQL, BigQuery, medallion architecture (raw/staging/marts), dimensional modeling, data quality, data lineage, vector databases
-  \item \textbf{BI \& AI:} Looker, Metabase, Looker Studio, LLM APIs, prompt engineering, RAG / vector search
-  \item \textbf{Business Systems \& Integration:} Odoo, ERPNext, Haravan, BizFly, AppSheet, Lark Suite, REST APIs, web scraping, WordPress
+  \item \textbf{Languages:} Python, SQL, JavaScript
+  \item \textbf{Data Engineering:} ETL/ELT, dbt, Dagster, Airflow, Airbyte, dlt, n8n, Apache Kafka, Docker, GitHub Actions, CI/CD
+  \item \textbf{Databases \& Warehouses:} PostgreSQL, BigQuery, Databricks, ClickHouse, Apache Doris, StarRocks, dimensional modeling, data lineage, vector databases
+  \item \textbf{BI \& AI:} Looker, Metabase, Power BI, Looker Studio, LLM APIs, prompt engineering, RAG / vector search, AI-assisted development
+  \item \textbf{Cloud \& Integration:} AWS Lambda, Cloudflare, REST APIs, web scraping, Odoo, ERPNext, Haravan, BizFly, AppSheet, Lark Suite, WordPress
+  \item \textbf{Stakeholder Communication:} user-friendly dashboards, executive presentations, translating business requirements into technical specs
 \end{itemize}
 
 %------------%
@@ -184,41 +179,101 @@
 
 \section{Experience}
 
-\headingBf{Senior Data Engineer | Jemmia}{Sep 2023 -- Present}
-\vspace{3pt}
+\headingBf{Senior Data Engineer | Jemmia Diamond}{Sep 2023 -- Present}
+\vspace{1pt}
 \begin{resume_list}
-  \item \textbf{Architected the company's centralized data platform:} unified ingestion from Haravan, ERP, warehouse scanning and ad platforms (Google Ads, GA4, Facebook Ads) via dlt, Airbyte and n8n into PostgreSQL; orchestrated with Dagster; transformed data through a \textbf{medallion architecture} (raw $\rightarrow$ staging $\rightarrow$ marts) with dbt; \textbf{cut ETL development effort by 90\%} versus legacy Lambda scripts.
-  \item \textbf{Championed data governance \& quality} across departments: standardized product definitions, SKU/variant rules and naming conventions; wrote \textbf{dbt tests} and validation checks on critical marts; documented \textbf{data lineage} with dbt docs; reorganized Lark Base data and built mini ETL flows delivering clean data back to department workspaces.
+  \item \textbf{Architected the centralized data platform:} unified ingestion (Haravan, ERP, warehouse scanning, Google Ads, GA4, Facebook Ads) via dlt, Airbyte and n8n into PostgreSQL; orchestrated with Dagster; dbt medallion modeling (raw $\rightarrow$ staging $\rightarrow$ marts); \textbf{cut ETL effort by 90\%} versus legacy Lambda scripts.
+  \item \textbf{Championed data governance \& quality:} standardized SKU/variant rules and naming conventions; wrote \textbf{dbt tests}, documented \textbf{data lineage} with dbt docs, and built mini ETL flows delivering clean data back to departments.
   \item Rebuilt the company CRM on \textbf{BizFly} (migrating from \textbf{Odoo} with full data standardization and backfill), then led the ERP transition to \textbf{ERPNext} -- rollout planning, production deployment with \textbf{CI/CD}, and \textbf{REST API} source-system integration. Result: \textbf{100\% consolidated customer information} with a clear end-to-end journey.
   \item Built BI for Sales, Marketing, Finance and BOD on Looker, migrated to Metabase with fine-grained permissions and an AI-powered natural-language Q\&A layer -- \textbf{enabling strategy shifts up to 3x faster}.
-  \item Built AI-driven data products: optimized SQL and data marts for \textbf{Salesaya (AI sales assistant), cutting consultation time by 60\%}; captured conversations via \textbf{Apache Kafka webhooks} into a vector database for RAG-based analysis; scraped Facebook audience data (Custom Lens) into the warehouse; owned CI/CD and Dockerized deployments.
+  \item Built AI-driven data products: optimized SQL/data marts for \textbf{Salesaya (AI sales assistant), cutting consultation time by 60\%}; streamed conversations via \textbf{Apache Kafka} into a vector DB for RAG analysis; owned CI/CD and Docker deployments.
+\end{resume_list}
+
+\vspace{6pt}
+
+\headingBf{Data Analyst | BabyBet (Startup)}{Jul 2023 -- Sep 2023}
+\vspace{1pt}
+\begin{resume_list}
+  \item \textbf{Collected and consolidated market \& competitor data} (Grab, be) from market-intelligence platforms, surveys and secondary research into structured datasets for analysis.
+  \item \textbf{Built reports and analyses} on demand, willingness-to-pay, pricing and unit economics to assess the venture's feasibility.
+  \item \textbf{Communicated insights cross-functionally} to shape phased strategy and inform the go/no-go decision.
+\end{resume_list}
+
+\vspace{6pt}
+
+\headingBf{Data Analyst | AVLI Group JSC}{Feb 2023 -- Jul 2023}
+\vspace{1pt}
+\begin{resume_list}
+  \item \textbf{Built scraping \& ETL pipelines} on AWS Lambda (Python, BeautifulSoup, REST APIs) pulling batdongsan.com data into PostgreSQL, plus Zapier-fed Excel, Sheets and CSV sources.
+  \item \textbf{Designed a dimensional data warehouse} (star schema) modeling customers, properties and interactions as a single source of truth, with scheduled loads orchestrated via Airflow.
+  \item \textbf{Built a low-code CRM on AppSheet} (customer tracking, attendance, call logging for customers/landlords, apartment images, care history) -- \textbf{cutting customer-care and property-lookup time by 50\%}.
+  \item \textbf{Delivered Looker dashboards} for customer demand, inventory and sales performance.
+\end{resume_list}
+
+\vspace{0pt}
+
+\headingBf{Data Research Assistant | AISIA Research Lab}{Jun 2022 -- Jan 2023}
+\vspace{1pt}
+\begin{resume_list}
+  \item Labeled and curated Vietnamese speech data and contributed to optimizing \textbf{deep-learning ASR models} (Wav2Vec 2.0 / transformer-based) to advance Vietnamese speech-to-text, benchmarking against FPT's solution.
+\end{resume_list}
+
+%-----------%
+% Education %
+%-----------%
+
+%----------------------------%
+%       Page 2               %
+%----------------------------%
+
+\newpage
+
+%----------------------------%
+%       Personal Projects    %
+%----------------------------%
+
+\section{Personal Projects}
+
+% ---- MẪU: thay từng dự án bằng dự án thật của bạn (tên, năm, tech, mô tả, con số) ----
+
+\headingBf{Personal Data Platform (Mini Lakehouse)}{2024}
+\heading{\textit{Technologies: Python, dbt, Dagster, DuckDB, Docker}}{\href{https://github.com/namtran067}{\faGithub\ repo}}
+\vspace{3pt}
+\begin{resume_list}
+  \item Built an end-to-end mini data platform replicating a production architecture: ingestion $\rightarrow$ medallion layers (bronze/silver/gold) $\rightarrow$ analytics, orchestrated with Dagster and modeled with dbt (incl. tests and docs).
+  \item Containerized the stack with Docker; documented data lineage with dbt docs as a self-serve data catalog.
 \end{resume_list}
 
 \vspace{10pt}
 
-\headingBf{Data Analyst (Startup) | BabyBet}{Jul 2023 -- Sep 2023}
+\headingBf{Vietnamese RAG Knowledge Assistant}{2024}
+\heading{\textit{Technologies: Python, LLM APIs, ChromaDB, FastAPI}}{\href{https://github.com/namtran067}{\faGithub\ repo}}
 \vspace{3pt}
 \begin{resume_list}
-  \item Conducted market research and surveys; \textbf{automated competitor data scraping} (e.g., Grab) to analyze cost of goods, margins and operating expenses; delivered AI-assisted analyses and dashboards guiding product strategy and pricing.
+  \item Developed a retrieval-augmented Q\&A assistant over Vietnamese notes: chunking, embeddings and vector search, served via a FastAPI endpoint.
+  \item Evaluated retrieval quality and prompt strategies to improve answer accuracy.
 \end{resume_list}
 
 \vspace{10pt}
 
-\headingBf{Data Analyst | Avli Group JSC}{Feb 2023 -- Jul 2023}
+\headingBf{E-commerce Price Tracker}{2023}
+\heading{\textit{Technologies: Python, Scrapy, PostgreSQL, Metabase}}{\href{https://github.com/namtran067}{\faGithub\ repo}}
 \vspace{3pt}
 \begin{resume_list}
-  \item \textbf{Built automated ETL flows} (Python, AWS Lambda, Zapier) for apartment and customer data, achieving \textbf{2x faster processing} than manual Excel workflows.
-  \item Designed and maintained data models, dashboards and reports tracking apartment inventory and individual sales performance; \textbf{boosted apartment-check efficiency by 50\%}; delivered analyses that shaped leadership strategy.
-  \item Integrated the database with AppSheet to build the company's CRM app for product management.
+  \item Built a daily scraper tracking product prices across multiple e-commerce sites; stored in PostgreSQL and visualized price trends in Metabase dashboards.
+  \item Added alerting on price drops to support buying decisions.
 \end{resume_list}
 
 \vspace{10pt}
 
-\headingBf{Data Research Assistant | ASIA Research Lab}{Jun 2022 -- Jan 2023}
+\headingBf{Vietnamese Speech-to-Text Experiment}{2022}
+\heading{\textit{Technologies: Python, Docker, HuggingFace, Label Studio}}{\href{https://github.com/namtran067}{\faGithub\ repo}}
 \vspace{3pt}
 \begin{resume_list}
-  \item Contributed to a Vietnamese Speech-to-Text project: proposed data-source strategies, \textbf{built audio-text labeling workflows with Label Studio}, and trained/evaluated ASR models with Python and Docker.
+  \item Fine-tuned an ASR model on Vietnamese audio; built labeling workflows and evaluated word error rate (WER) on a held-out test set.
 \end{resume_list}
+
+\vspace{10pt}
 
 %-----------%
 % Education %
@@ -229,37 +284,5 @@
 \headingBf{University of Information Technology}{2019 -- Jun 2023}
 \heading{Bachelor of Data Science}{Ho Chi Minh City, VN}
 \heading{GPA: 8.5/10 | IELTS 7.0}{}
-
-%----------------------------%
-%       Personal Projects    %
-%----------------------------%
-
-\newpage
-
-\section{Personal Projects}
-
-% ---- VÍ DỤ MẪU: thay thế tên, năm, mô tả và con số của dự án thật ----
-
-\headingBf{Project Name 1 (Replace Me)}{Year}
-\vspace{3pt}
-\begin{resume_list}
-  \item Describe the project, technologies used, and a measurable outcome. For example: "Built a real-time analytics dashboard for X, processing 10k+ events/day with Python and PostgreSQL."
-\end{resume_list}
-
-\vspace{10pt}
-
-\headingBf{Project Name 2 (Replace Me)}{Year}
-\vspace{3pt}
-\begin{resume_list}
-  \item Describe the project, technologies used, and a measurable outcome. For example: "Developed a RAG-based Q\&A chatbot using LLM APIs and vector search, reducing information lookup time by X\%."
-\end{resume_list}
-
-\vspace{10pt}
-
-\headingBf{Project Name 3 (Replace Me)}{Year}
-\vspace{3pt}
-\begin{resume_list}
-  \item Describe the project, technologies used, and a measurable outcome.
-\end{resume_list}
 
 \end{document}

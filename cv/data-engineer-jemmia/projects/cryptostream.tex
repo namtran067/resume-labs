@@ -1,0 +1,12 @@
+%%%%
+% Project block — CryptoStream Labs (automated ELT pipeline), from main.tex
+% Usage: \input{content/projects/cryptostream.tex}
+%%%%
+
+\headingBf{CryptoStream Labs (Automated ELT Pipeline)}{2024}
+\heading{\textit{Technologies: Google Cloud (GKE, BigQuery), Apache Airflow, dbt, Airbyte, Docker, Helm, SQL}}{\href{https://github.com/namtran067/cryptostream-labs}{\faGithub\ repo}}
+\vspace{3pt}
+\begin{resume_list}
+  \item Built an automated ELT pipeline ingesting cryptocurrency data from the CoinMarketCap API via Airbyte into BigQuery, then transformed raw data into a partitioned One Big Table (OBT) with dbt to speed up reporting.
+  \item Orchestrated the end-to-end workflow on Apache Airflow for hourly freshness, deploying the full stack on Google Kubernetes Engine (GKE) via Helm for high availability.
+\end{resume_list}

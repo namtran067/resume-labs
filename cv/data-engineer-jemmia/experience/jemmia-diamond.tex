@@ -1,14 +1,16 @@
 %%%%
-% Experience block — Senior Data Engineer @ Jemmia Diamond (standard, from main.tex)
+% Experience block — Product (Senior) Data Engineer @ Jemmia Diamond
+% [Tag]-prefixed achievement format (merged/polished).
 % Usage: \input{content/experience/jemmia-diamond-sde.tex}
 %%%%
 
-\headingBf{Senior Data Engineer | Jemmia Diamond}{Sep 2023 -- Present}
+\headingBf{Product Data Engineer | Jemmia Diamond}{Sep 2023 -- Present}
 \vspace{1pt}
 \begin{resume_list}
-  \item \textbf{Architected the centralized data platform:} unified ingestion (Haravan, ERP, warehouse scanning, Google Ads, GA4, Facebook Ads) via dlt, Airbyte and n8n into PostgreSQL; orchestrated with Dagster; dbt medallion modeling (raw $\rightarrow$ staging $\rightarrow$ marts); \textbf{cut ETL effort by 90\%} versus legacy Lambda scripts.
-  \item \textbf{Championed data governance \& quality:} standardized SKU/variant rules and naming conventions; wrote \textbf{dbt tests}, documented \textbf{data lineage} with dbt docs, and built mini ETL flows delivering clean data back to departments.
-  \item Rebuilt the company CRM on \textbf{BizFly} (migrating from \textbf{Odoo} with full data standardization and backfill), then led the ERP transition to \textbf{ERPNext} -- rollout planning, production deployment with \textbf{CI/CD}, and \textbf{REST API} source-system integration. Result: \textbf{100\% consolidated customer information} with a clear end-to-end journey.
-  \item Built BI for Sales, Marketing, Finance and BOD on Looker, migrated to Metabase with fine-grained permissions and an AI-powered natural-language Q\&A layer -- \textbf{enabling strategy shifts up to 3x faster}.
-  \item Built AI-driven data products: optimized SQL/data marts for \textbf{Salesaya (AI sales assistant), cutting consultation time by 60\%}; streamed conversations via \textbf{Apache Kafka} into a vector DB for RAG analysis; owned CI/CD and Docker deployments.
+  \item \textbf{[Data Platform \& Orchestration]} Architected and deployed a scalable Modern Data Stack from scratch using Dagster (deployed via Dokploy) as software-defined assets. Engineered automated ingestion pipelines with dlt, Airbyte, and n8n to centralize data from 12+ fragmented sources (Social Ads, Haravan, ERP, Stringee) into a PostgreSQL Data Warehouse -- 150 raw tables processing 500K+ rows/day.
+  \item \textbf{[Data Modeling \& Transformation]} Designed scalable Star Schema (Kimball) models and authored 200+ transformation models across layered stages (Raw $\rightarrow$ Staging $\rightarrow$ Intermediate $\rightarrow$ Marts). Reduced pipeline development and maintenance time by 90\% while ensuring 100\% data accuracy through dbt tests (schema, not-null, accepted-values, relationships, freshness) and enforcing PII masking and lineage via OpenMetadata.
+  \item \textbf{[Serverless ETL \& IoT Integration]} Migrated brittle legacy workflows (Zapier) to event-driven architectures on AWS Lambda (deployed via AWS SAM). Designed a high-throughput pipeline integrating hardware RFID scanners with e-commerce systems via webhooks ($\sim$1{,}000 records / 3MB per scan, 20 scans/day), enabling time-series analysis for inventory optimization and supply-chain management.
+  \item \textbf{[Enterprise Systems \& Master Data]} Led the migration and implementation of enterprise systems: migrated 10GB+ legacy data to ERPNext and engineered a custom Product Information Management (PIM) system on NocoDB (40+ tables) integrated with a Cloudflare R2 data lake. Executed zero-downtime backfill for 8,000+ SKUs and set up CDC -- reducing cross-departmental manual operations by 40\% with 97\% user adoption.
+  \item \textbf{[GenAI \& Data Activation]} Transformed BI by migrating the analytics layer from Looker to Metabase and building two AI products on the warehouse: \textbf{Salesaya} (AI sales assistant cutting consultation time 60\%) and \textbf{Metabot} -- a Telegram/Discord agent for secure natural-language data queries without exposing the underlying database (Metabase API, Next.js, React, Redis context caching).
+  \item \textbf{[DataOps \& Leadership]} Established CI/CD pipelines for all analytical applications and ERP deployments, and configured real-time anomaly alerting via Sentry. Led data-literacy workshops for the BOD and department heads, driving a data-driven culture and engineering standards across the organization.
 \end{resume_list}

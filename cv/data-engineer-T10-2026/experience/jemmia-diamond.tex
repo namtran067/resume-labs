@@ -1,0 +1,15 @@
+%%%%
+% Experience block — Product Data Engineer @ Jemmia Diamond (Sep 2023 – Jul 2026)
+% Condensed: 6 bullets, CI/CD + monitoring folded into platform bullet.
+%%%%
+
+\headingBf{Product Data Engineer | Jemmia Diamond}{Sep 2023 -- Jul 2026}
+\vspace{1pt}
+\begin{resume_list}
+  \item \textbf{[Data Platform \& Orchestration]} Architected and deployed a Modern Data Stack on Dagster (via Dokploy) as software-defined assets, with dlt/Airbyte/n8n ingestion centralizing 12+ sources (Social Ads, Haravan, ERP, Stringee) into a PostgreSQL Data Warehouse -- 150 raw tables processing 500K+ rows/day, with CI/CD and Sentry anomaly alerting throughout.
+  \item \textbf{[Data Modeling \& Transformation]} Designed Star Schema (Kimball) models and authored 200+ dbt transformations across Raw $\rightarrow$ Staging $\rightarrow$ Intermediate $\rightarrow$ Marts, cutting development and maintenance time by 90\% with dbt tests (schema, not-null, relationships, freshness), PII masking and lineage via OpenMetadata.
+  \item \textbf{[Serverless ETL \& IoT Integration]} Migrated brittle legacy workflows (Zapier) to event-driven architectures on AWS Lambda (deployed via AWS SAM). Designed a high-throughput pipeline integrating hardware RFID scanners with e-commerce systems via webhooks ($\sim$1{,}000 records / 3MB per scan, 20 scans/day), enabling time-series analysis for inventory optimization and supply-chain management.
+  \item \textbf{[Enterprise Systems \& Master Data]} Led enterprise systems transformation: migrated 10GB+ to ERPNext and engineered a custom PIM on NocoDB (40+ tables) over a Cloudflare R2 data lake, with zero-downtime backfill for 8,000+ SKUs and CDC -- cutting cross-departmental manual operations 40\% at 97\% adoption.
+  \item \textbf{[Business Intelligence \& Analytics]} Primary analytics partner for Sales, Marketing, Finance and the BOD -- defined KPIs and a governed semantic layer, shipped 30+ executive dashboards in Looker (100\% key-metric coverage), then migrated BI to Metabase for self-service analytics -- accelerating data-driven decisions up to 3x.
+  \item \textbf{[GenAI \& Data Activation]} Built AI products on the warehouse: \textbf{Salesaya} (AI sales assistant cutting consultation time 60\%) and \textbf{Metabot} -- a Telegram/Discord agent for secure natural-language data queries without exposing the underlying database (Metabase API, Next.js, React, Redis context caching).
+\end{resume_list}
